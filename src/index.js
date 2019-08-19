@@ -1,12 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function MostrarI = (props) =>{
+    return <p>{props.i}</p>
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+function App(props){
+    const [i, setI] = useState(1)
+
+    const increment = () => {
+        setI(i+ 1)
+    }
+
+    return (
+        <div classname="App">
+        <h1>Ola {props.name} {i}</h1>
+        <button onClick={increment}> Incrementar </button>
+        <MostrarI i={i} />
+        </div>
+    );
+}
+
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App name="DevPleno" />, rootElement);
+
